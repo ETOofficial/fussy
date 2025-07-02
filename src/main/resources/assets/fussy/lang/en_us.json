@@ -1,0 +1,11 @@
+{
+  "tooltip_preference": "Preference: %.0f %%",
+
+  "config_resetOnDeath": "Reset on Death",
+  "config_preferenceReducePercent": "Preference reduction percentage",
+  "config_defaultPreferencePercent": "Default food preference level",
+
+  "config_tip_resetOnDeath": "Whether or not food preferences are reset after death",
+  "config_tip_preferenceReducePercent": "When food is consumed, the level of food preference will be multiplied by that percentage",
+  "config_tip_defaultPreferencePercent": "Initial percentage of food preference"
+}
