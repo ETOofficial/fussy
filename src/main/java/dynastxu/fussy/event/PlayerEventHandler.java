@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static dynastxu.fussy.Fussy.MODID;
+import static dynastxu.fussy.utils.FussyUtils.cleanUp;
 
 @EventBusSubscriber(modid = MODID)
 public class PlayerEventHandler {
@@ -58,19 +59,31 @@ public class PlayerEventHandler {
         // 获取物品的键
         String itemKey = BuiltInRegistries.ITEM.getKey(item).toString();
         // 获取玩家的食物偏好
-        Map<String, Float> foodPreference = new HashMap<>(serverPlayer.getData(AttachmentRegistry.FOOD_PREFERENCES));
+        Map<String, Float> foodPreferences = new HashMap<>(serverPlayer.getData(AttachmentRegistry.FOOD_PREFERENCES));
+
+        // 增加偏好
+        for (String key : foodPreferences.keySet()) {
+            if (key.equals(itemKey)) continue;
+            float raiseAmount = (float) (foodPreferences.get(key) + Config.PREFERENCE_RAISE_AMOUNT.get());
+            if (raiseAmount > 1) raiseAmount = 1;
+            foodPreferences.put(key, raiseAmount);
+        }
+
         // 获取物品的偏好
-        float preference = foodPreference.getOrDefault(
+        float preference = foodPreferences.getOrDefault(
                 itemKey,
                 Config.DEFAULT_PREFERENCE_PERCENT.get() / 100f // 默认偏好百分比
         );
         // 设置物品的偏好
-        foodPreference.put(
+        foodPreferences.put(
                 itemKey,
                 preference * (1 - Config.PREFERENCE_REDUCE_PERCENT.get() / 100f) // 减少偏好
         );
 
-        serverPlayer.setData(AttachmentRegistry.FOOD_PREFERENCES, foodPreference);
+        // 清理无用的偏好
+        Map<String, Float> foodPreferenceClean = cleanUp(foodPreferences);
+
+        serverPlayer.setData(AttachmentRegistry.FOOD_PREFERENCES, foodPreferenceClean);
         syncFoodPreferences(serverPlayer);
     }
 

@@ -41,5 +41,9 @@ public class Config {
             .comment(Component.translatable("config_tip_defaultPreferencePercent").getString())
             .defineInRange(Component.translatable("config_defaultPreferencePercent").getString(), 100, 0, 200);
 
+    public static final ModConfigSpec.DoubleValue PREFERENCE_RAISE_AMOUNT = BUILDER
+            .comment(Component.translatable("config_tip_preferenceRaiseAmount").getString())
+            .defineInRange(Component.translatable("config_preferenceRaiseAmount").getString(), 0.001d, 0d, 1d);
+
     static final ModConfigSpec SPEC = BUILDER.build();
 }
