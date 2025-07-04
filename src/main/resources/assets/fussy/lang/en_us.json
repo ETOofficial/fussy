@@ -1,5 +1,7 @@
 {
   "tooltip_preference": "Preference: %.0f %%",
+  "spitUp": "You vomited everything you ate",
+  "eatLikeShit": "You feel like you're going to vomit if you eat it again",
 
   "fussy.configuration.resetOnDeath": "Reset on Death",
   "fussy.configuration.preferenceReducePercent": "Preference reduction by percentage",

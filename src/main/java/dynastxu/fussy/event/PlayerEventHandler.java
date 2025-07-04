@@ -3,8 +3,8 @@ package dynastxu.fussy.event;
 import dynastxu.fussy.Config;
 import dynastxu.fussy.attachment.AttachmentRegistry;
 import dynastxu.fussy.network.SyncFoodPreferencesPayload;
-import net.minecraft.client.renderer.EffectInstance;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -85,6 +85,26 @@ public class PlayerEventHandler {
                     (int) (200 * (1 - preference / 0.6f) + 100),
                     0                      // 效果等级
             ));
+
+            if (preference >= 0.3f) {
+                serverPlayer.sendSystemMessage(Component.translatable("eatLikeShit"));
+            }
+        }
+
+        if (preference < 0.3f) {
+            // 扣除玩家饱食度
+            int exhaustion = foodProp.nutrition(); // 饱食度
+            float saturation = foodProp.saturation(); // 饱和度
+
+            float total = (exhaustion + 4 * saturation) * (1.5f * (1 - preference / 0.3f));
+
+            serverPlayer.addEffect(new MobEffectInstance(
+                    MobEffects.HUNGER,
+                    100,
+                    (int) (total * 2)
+            ));
+
+            serverPlayer.sendSystemMessage(Component.translatable("spitUp"));
         }
 
         // 设置物品的偏好
