@@ -13,6 +13,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
@@ -49,6 +50,12 @@ public class PlayerEventHandler {
 
     @SubscribeEvent
     public static void onClone(PlayerEvent.Clone event) {
+        if (event.isWasDeath() && event.getOriginal().hasData(AttachmentRegistry.FOOD_PREFERENCES) && !Config.RESET_ON_DEATH.getAsBoolean()) {
+            event.getEntity().setData(
+                    AttachmentRegistry.FOOD_PREFERENCES,
+                    event.getOriginal().getData(AttachmentRegistry.FOOD_PREFERENCES)
+            );
+        }
     }
 
     @SubscribeEvent
