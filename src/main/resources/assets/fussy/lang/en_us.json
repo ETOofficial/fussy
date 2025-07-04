@@ -7,9 +7,13 @@
   "fussy.configuration.preferenceReducePercent": "Preference reduction by percentage",
   "fussy.configuration.defaultPreferencePercent": "Default food preference level",
   "fussy.configuration.preferenceRaiseAmount": "Preference increases percentage",
+  "fussy.configuration.spitUpThreshold": "Vomiting threshold",
+  "fussy.configuration.hateThreshold": "Aversion threshold",
 
   "fussy.configuration.resetOnDeath.tooltip": "Whether or not food preferences are reset after death",
   "fussy.configuration.preferenceReducePercent.tooltip": "When food is consumed, the level of food preference will be multiplied by that percentage",
   "fussy.configuration.defaultPreferencePercent.tooltip": "Initial percentage of food preference",
-  "fussy.configuration.preferenceRaiseAmount.tooltip": "The percentage of food preference that increases when one food is eaten"
+  "fussy.configuration.preferenceRaiseAmount.tooltip": "The percentage of food preference that increases when one food is eaten",
+  "fussy.configuration.spitUpThreshold.tooltip": "Continuing to eat food below this percentage will cause vomiting",
+  "fussy.configuration.hateThreshold.tooltip": "Continuing to eat food when the food preference level is below this percentage will cause nausea"
 }

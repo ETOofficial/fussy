@@ -7,9 +7,13 @@
   "fussy.configuration.preferenceReducePercent": "偏好减少百分比",
   "fussy.configuration.defaultPreferencePercent": "默认的食物喜好程度",
   "fussy.configuration.preferenceRaiseAmount": "偏好增加百分比",
+  "fussy.configuration.spitUpThreshold": "呕吐阈值",
+  "fussy.configuration.hateThreshold": "厌恶阈值",
 
   "fussy.configuration.resetOnDeath.tooltip": "死亡后是否重置食物偏好",
   "fussy.configuration.preferenceReducePercent.tooltip": "当食用食物时，食物喜好程度将乘以该百分比",
   "fussy.configuration.defaultPreferencePercent.tooltip": "食物喜好程度的初始百分比",
-  "fussy.configuration.preferenceRaiseAmount.tooltip": "当一个食物被食用时，其他种类食物喜好程度上升的百分比"
+  "fussy.configuration.preferenceRaiseAmount.tooltip": "当一个食物被食用时，其他种类食物喜好程度上升的百分比",
+  "fussy.configuration.spitUpThreshold.tooltip": "当食物喜好程度低于该百分比后继续食用，将会导致呕吐",
+  "fussy.configuration.hateThreshold.tooltip": "当食物喜好程度低于该百分比后继续食用，将会导致反胃"
 }
