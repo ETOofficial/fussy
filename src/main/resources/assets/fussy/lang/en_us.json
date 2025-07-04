@@ -1,5 +1,5 @@
 {
-  "tooltip_preference": "Preference: %.0f %%",
+  "tooltip_preference": "Preference: %f %%",
   "spitUp": "You vomited everything you ate",
   "eatLikeShit": "You feel like you're going to vomit if you eat it again",
 

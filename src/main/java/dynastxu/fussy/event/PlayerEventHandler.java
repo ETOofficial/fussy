@@ -78,7 +78,7 @@ public class PlayerEventHandler {
                 Config.DEFAULT_PREFERENCE_PERCENT.getAsInt() / 100f // 默认偏好百分比
         );
 
-        if (preference < 0.6f) {
+        if (preference < Config.HATE_THRESHOLD.getAsInt() / 100f) {
             // 给予玩家恶心效果
             serverPlayer.addEffect(new MobEffectInstance(
                     MobEffects.CONFUSION,  // 恶心效果
@@ -86,12 +86,12 @@ public class PlayerEventHandler {
                     0                      // 效果等级
             ));
 
-            if (preference >= 0.3f) {
+            if (preference >= Config.SPIT_UP_THRESHOLD.getAsInt() / 100f) {
                 serverPlayer.sendSystemMessage(Component.translatable("eatLikeShit"));
             }
         }
 
-        if (preference < 0.3f) {
+        if (preference < Config.SPIT_UP_THRESHOLD.getAsInt() / 100f) {
             // 扣除玩家饱食度
             int exhaustion = foodProp.nutrition(); // 饱食度
             float saturation = foodProp.saturation(); // 饱和度

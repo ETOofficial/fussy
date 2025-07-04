@@ -38,11 +38,19 @@ public class Config {
 
     public static final ModConfigSpec.IntValue DEFAULT_PREFERENCE_PERCENT = BUILDER
             .comment("defaultPreferencePercent")
-            .defineInRange("defaultPreferencePercent", 100, 0, 200);
+            .defineInRange("defaultPreferencePercent", 100, 0, 100);
 
     public static final ModConfigSpec.DoubleValue PREFERENCE_RAISE_AMOUNT = BUILDER
             .comment("preferenceRaiseAmount")
-            .defineInRange("preferenceRaiseAmount", 0.001d, 0d, 1d);
+            .defineInRange("preferenceRaiseAmount", 0.0001d, 0d, 1d);
+
+    public static final ModConfigSpec.IntValue SPIT_UP_THRESHOLD = BUILDER
+            .comment("spitUpThreshold")
+            .defineInRange("spitUpThreshold", 30, 0, 100);
+
+    public static final ModConfigSpec.IntValue HATE_THRESHOLD = BUILDER
+            .comment("hateThreshold")
+            .defineInRange("hateThreshold", 60, 0, 100);
 
     static final ModConfigSpec SPEC = BUILDER.build();
 }
