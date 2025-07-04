@@ -1,25 +1,12 @@
+# Fussy
 
-Installation information
-=======
+## 介绍
 
-This template repository can be directly cloned to get you started with a new
-mod. Simply create a new repository cloned from this one, by following the
-instructions provided by [GitHub](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
+如果你正烦恼于你的朋友天天只吃一种食物（尤其是你在使用了添加了大量食物的 mod 时），
+你可以试试这个mod
 
-Once you have your clone, simply open the repository in the IDE of your choice. The usual recommendation for an IDE is either IntelliJ IDEA or Eclipse.
+如果你一次性吃了大量同种食物，那么你将会感到反胃；
+如果你仍旧继续吃，那你就会把你吃的全都 ~~呕……~~ 吐出来。
+你只有通过食用大量其它种类的食物，你才会重新接受这种食物。
 
-If at any point you are missing libraries in your IDE, or you've run into problems you can
-run `gradlew --refresh-dependencies` to refresh the local cache. `gradlew clean` to reset everything 
-{this does not affect your code} and then start the process again.
-
-Mapping Names:
-============
-By default, the MDK is configured to use the official mapping names from Mojang for methods and fields 
-in the Minecraft codebase. These names are covered by a specific license. All modders should be aware of this
-license. For the latest license text, refer to the mapping file itself, or the reference copy here:
-https://github.com/NeoForged/NeoForm/blob/main/Mojang.md
-
-Additional Resources: 
-==========
-Community Documentation: https://docs.neoforged.net/  
-NeoForged Discord: https://discord.neoforged.net/
+当然，如果你觉得一些数值不合理，你可以在配置文件里进行调整。
