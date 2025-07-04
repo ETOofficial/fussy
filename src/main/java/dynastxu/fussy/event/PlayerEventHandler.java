@@ -3,8 +3,11 @@ package dynastxu.fussy.event;
 import dynastxu.fussy.Config;
 import dynastxu.fussy.attachment.AttachmentRegistry;
 import dynastxu.fussy.network.SyncFoodPreferencesPayload;
+import net.minecraft.client.renderer.EffectInstance;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -64,20 +67,30 @@ public class PlayerEventHandler {
         // 增加偏好
         for (String key : foodPreferences.keySet()) {
             if (key.equals(itemKey)) continue;
-            float raiseAmount = (float) (foodPreferences.get(key) + Config.PREFERENCE_RAISE_AMOUNT.get());
-            if (raiseAmount > 1) raiseAmount = 1;
+            float raiseAmount = (float) (foodPreferences.get(key) + Config.PREFERENCE_RAISE_AMOUNT.getAsDouble());
+            if (raiseAmount > Config.DEFAULT_PREFERENCE_PERCENT.getAsInt() / 100f) raiseAmount = Config.DEFAULT_PREFERENCE_PERCENT.getAsInt() / 100f;
             foodPreferences.put(key, raiseAmount);
         }
 
         // 获取物品的偏好
         float preference = foodPreferences.getOrDefault(
                 itemKey,
-                Config.DEFAULT_PREFERENCE_PERCENT.get() / 100f // 默认偏好百分比
+                Config.DEFAULT_PREFERENCE_PERCENT.getAsInt() / 100f // 默认偏好百分比
         );
+
+        if (preference < 0.6f) {
+            // 给予玩家恶心效果
+            serverPlayer.addEffect(new MobEffectInstance(
+                    MobEffects.CONFUSION,  // 恶心效果
+                    (int) (200 * (1 - preference / 0.6f) + 100),
+                    0                      // 效果等级
+            ));
+        }
+
         // 设置物品的偏好
         foodPreferences.put(
                 itemKey,
-                preference * (1 - Config.PREFERENCE_REDUCE_PERCENT.get() / 100f) // 减少偏好
+                preference * (1 - Config.PREFERENCE_REDUCE_PERCENT.getAsInt() / 100f) // 减少偏好
         );
 
         // 清理无用的偏好

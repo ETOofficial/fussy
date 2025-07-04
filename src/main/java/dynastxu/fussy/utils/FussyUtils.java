@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FussyUtils {
-    private static final float DEFAULT_PREFERENCE_PERCENT = Config.DEFAULT_PREFERENCE_PERCENT.get() / 100f;
+    private static final float DEFAULT_PREFERENCE_PERCENT = Config.DEFAULT_PREFERENCE_PERCENT.getAsInt() / 100f;
 
     public static Map<String, Float> cleanUp(Map<String, Float> foodPreferences){
         Map<String, Float> foodPreferenceClean = new HashMap<>();
