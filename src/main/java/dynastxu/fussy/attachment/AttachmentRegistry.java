@@ -2,7 +2,6 @@ package dynastxu.fussy.attachment;
 
 
 import com.mojang.serialization.Codec;
-import dynastxu.fussy.Config;
 import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;

@@ -5,7 +5,6 @@ import dynastxu.fussy.attachment.AttachmentRegistry;
 import dynastxu.fussy.network.SyncFoodPreferencesPayload;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -15,6 +14,7 @@ import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import static dynastxu.fussy.Fussy.MODID;
@@ -25,16 +25,22 @@ public class PlayerEventHandler {
     // 玩家登录时同步
     @SubscribeEvent
     public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
+        if (!(event.getEntity() instanceof ServerPlayer serverPlayer)) return;
+        syncFoodPreferences(serverPlayer);
     }
 
     // 玩家重生时同步
     @SubscribeEvent
     public static void onPlayerRespawn(PlayerEvent.PlayerRespawnEvent event) {
+        if (!(event.getEntity() instanceof ServerPlayer serverPlayer)) return;
+        syncFoodPreferences(serverPlayer);
     }
 
     // 跨维度时同步
     @SubscribeEvent
     public static void onDimensionChange(PlayerEvent.PlayerChangedDimensionEvent event) {
+        if (!(event.getEntity() instanceof ServerPlayer serverPlayer)) return;
+        syncFoodPreferences(serverPlayer);
     }
 
     @SubscribeEvent
@@ -52,7 +58,7 @@ public class PlayerEventHandler {
         // 获取物品的键
         String itemKey = BuiltInRegistries.ITEM.getKey(item).toString();
         // 获取玩家的食物偏好
-        Map<String, Float> foodPreference = serverPlayer.getData(AttachmentRegistry.FOOD_PREFERENCES);
+        Map<String, Float> foodPreference = new HashMap<>(serverPlayer.getData(AttachmentRegistry.FOOD_PREFERENCES));
         // 获取物品的偏好
         float preference = foodPreference.getOrDefault(
                 itemKey,
