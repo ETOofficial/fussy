@@ -1,6 +1,5 @@
 package dynastxu.fussy;
 
-import net.minecraft.network.chat.Component;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 // An example config class. This is not required, but it's a good idea to have one to keep your config organized.
@@ -30,20 +29,20 @@ public class Config {
 //    }
 
     public static final ModConfigSpec.BooleanValue RESET_ON_DEATH = BUILDER
-            .comment(Component.translatable("config_tip_resetOnDeath").getString())
-            .define(Component.translatable("config_resetOnDeath").getString(), false);
+            .comment("resetOnDeath")
+            .define("resetOnDeath", false);
 
     public static final ModConfigSpec.IntValue PREFERENCE_REDUCE_PERCENT = BUILDER
-            .comment(Component.translatable("config_tip_preferenceReducePercent").getString())
-            .defineInRange(Component.translatable("config_preferenceReducePercent").getString(), 1, 0, 100);
+            .comment("preferenceReducePercent")
+            .defineInRange("preferenceReducePercent", 1, 0, 100);
 
     public static final ModConfigSpec.IntValue DEFAULT_PREFERENCE_PERCENT = BUILDER
-            .comment(Component.translatable("config_tip_defaultPreferencePercent").getString())
-            .defineInRange(Component.translatable("config_defaultPreferencePercent").getString(), 100, 0, 200);
+            .comment("defaultPreferencePercent")
+            .defineInRange("defaultPreferencePercent", 100, 0, 200);
 
     public static final ModConfigSpec.DoubleValue PREFERENCE_RAISE_AMOUNT = BUILDER
-            .comment(Component.translatable("config_tip_preferenceRaiseAmount").getString())
-            .defineInRange(Component.translatable("config_preferenceRaiseAmount").getString(), 0.001d, 0d, 1d);
+            .comment("preferenceRaiseAmount")
+            .defineInRange("preferenceRaiseAmount", 0.001d, 0d, 1d);
 
     static final ModConfigSpec SPEC = BUILDER.build();
 }

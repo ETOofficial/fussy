@@ -1,13 +1,13 @@
 {
   "tooltip_preference": "喜好程度: %.0f %%",
 
-  "config_resetOnDeath": "死亡后重置",
-  "config_preferenceReducePercent": "偏好减少百分比",
-  "config_defaultPreferencePercent": "默认的食物喜好程度",
-  "config_preferenceRaiseAmount": "偏好增加百分比",
+  "fussy.configuration.resetOnDeath": "死亡后重置",
+  "fussy.configuration.preferenceReducePercent": "偏好减少百分比",
+  "fussy.configuration.defaultPreferencePercent": "默认的食物喜好程度",
+  "fussy.configuration.preferenceRaiseAmount": "偏好增加百分比",
 
-  "config_tip_resetOnDeath": "死亡后是否重置食物偏好",
-  "config_tip_preferenceReducePercent": "当食用食物时，食物喜好程度将乘以该百分比",
-  "config_tip_defaultPreferencePercent": "食物喜好程度的初始百分比",
-  "config_tip_preferenceRaiseAmount": "当一个食物被食用时，其他种类食物喜好程度上升的百分比"
+  "fussy.configuration.resetOnDeath.tooltip": "死亡后是否重置食物偏好",
+  "fussy.configuration.preferenceReducePercent.tooltip": "当食用食物时，食物喜好程度将乘以该百分比",
+  "fussy.configuration.defaultPreferencePercent.tooltip": "食物喜好程度的初始百分比",
+  "fussy.configuration.preferenceRaiseAmount.tooltip": "当一个食物被食用时，其他种类食物喜好程度上升的百分比"
 }
